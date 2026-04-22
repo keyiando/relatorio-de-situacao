@@ -1,0 +1,11 @@
+.Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+data/raw
+data/processed
+descriptive-stats
+
+relatorio-de-situacao.Rproj
+settings.rds
