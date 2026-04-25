@@ -15,6 +15,8 @@ source("scripts/general-functions.R")
 
 # Install packages
 
+options(download.file.method = "wininet") # Sometimes R tries to use a modern connection method that the firewall hates. This tells R to use the standard Windows internet settings instead.
+
 #  List of required packages 
 required_packages <- c("data.table" # optimized package to manage data
                         ,"dplyr" # to manipulate data in the cleaning process
@@ -30,6 +32,11 @@ required_packages <- c("data.table" # optimized package to manage data
 #  Uses the fucntion created at general-functions.R and install the requeired ones (if not already installed)
 check_and_install_packages(required_packages)
 lapply(required_packages, library, character.only = TRUE)
+
+# Just for gglot2 in case it doesn't install correctly 
+#install.packages("ggplot2", 
+#                 repos = "http://cran.rstudio.com/", 
+#                 type = "win.binary")
 
 sessionInfo() # checking session
 
@@ -48,7 +55,7 @@ source("scripts/dataprep/prep-dataprep-functions.R")
 #source("scripts/dataprep/prep-ugrhi-gerencia-divisao.R")
 load("./data/processed/dt_ugrhi_gerencia_divisao.rds") 
 
-# 1. SOE data
+# 2. SOE data
 #source("scripts/dataprep/prep-soe-1-import-and-save.R")
 #load("./data/processed/dt_soe.rds") #
 

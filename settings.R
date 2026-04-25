@@ -19,6 +19,7 @@ gc()
 settings <- list(
   
   project_path = "D:/Keyi/OneDrive/Documentos/SPAguas/DGC/Projetos/relatorio-de-situacao" # Caminho da pasta principal onde o projeto está guardado
+# project_path = "C:/Users/kaussami/OneDrive - PRODESP/Documentos/DGC/Projetos/relatorio-de-situacao" # 
   , dataref_soe_query_extraction = c("2026-04-10") # Data da extração de dados (query)
   )
 
