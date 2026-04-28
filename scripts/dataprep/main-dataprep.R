@@ -57,10 +57,17 @@ load("./data/processed/dt_ugrhi_gerencia_divisao.rds")
 
 # 2. SOE data
 #source("scripts/dataprep/prep-soe-1-import-and-save.R")
-#load("./data/processed/dt_soe.rds") #
-
+load("./data/processed/dt_soe.rds") #
 
 #source("scripts/dataprep/prep-soe-2-treatment.R")
+
+
+# 3. RS SMT data
+#source("scripts/dataprep/prep-rs-smt-data.R")
+
+
+
+
 
 
 
@@ -182,206 +189,7 @@ add_line_and_save_cleaning_descriptives("dt_soe_rural_users"
                                         ,round(sum(dt_soe_rural_users[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
 
 
-# Removing users with less than 5m3/day of Q
 
-dt_soe_rural_users1 <- dt_soe_rural_users[ vazao_normalizada_m3dia > 5, ]
-
-cat(paste0("Após remover isentos com Q < 5m3/d : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-# Removing users with less than 86.4 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 86.4, ]
-
-cat(paste0("Após remover isentos com Q < 86.4 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 86.4m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 86.4m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 86.4m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 86.4m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-# Removing users with less than 150 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 150, ]
-
-cat(paste0("Após remover isentos com Q < 150 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 150m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 150m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 150m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 150m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-# Removing users with less than 500 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 500, ]
-
-cat(paste0("Após remover isentos com Q < 500 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 500m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 500m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 500m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 500m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-# Removing users with less than 1000 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 1000, ]
-
-cat(paste0("Após remover isentos com Q < 1000 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 1000m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 1000m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 1000m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 1000m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-# Removing users with less than 2500 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 2500, ]
-
-cat(paste0("Após remover isentos com Q < 2500 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 2500m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 2500m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 2500m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 2500m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-# Removing users with less than 5000 m3/day of Q
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 5000, ]
-
-cat(paste0("Após remover isentos com Q < 5000 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5000m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5000m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5000m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 5000m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 10000, ]
-
-cat(paste0("Após remover isentos com Q < 10.000 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 10.000m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 10.000m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 10.000m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 10.000m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
-
-
-dt_soe_rural_users1 <- dt_soe_rural_users1[ vazao_normalizada_m3dia > 50000, ]
-
-cat(paste0("Após remover isentos com Q < 50.000 m3/d  : dt_soe_rural_users1 com ",nrow(dt_soe_rural_users1)," users e ",round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2)," m3/s"))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 50.000m3/day"
-                                        ,"users"
-                                        ,nrow(dt_soe_rural_users1))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 50.000m3/day"
-                                        ,"uses"
-                                        ,sum(dt_soe_rural_users1[,q_uses]))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 50.000m3/day"
-                                        ,"vazao_normalizada_m3s"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3s], na.rm = TRUE),2))
-
-add_line_and_save_cleaning_descriptives("dt_soe_rural_users1 - remove 50.000m3/day"
-                                        ,"vazao_normalizada_hm3dia"
-                                        ,round(sum(dt_soe_rural_users1[,vazao_normalizada_m3dia], na.rm = TRUE)/10^6,2))
 
 
 
