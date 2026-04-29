@@ -5,7 +5,7 @@
 
 data/raw
 data/processed
-descriptive-stats
+/descriptive-stats/
 
 relatorio-de-situacao.Rproj
 settings.rds
