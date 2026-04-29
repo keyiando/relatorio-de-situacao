@@ -27,6 +27,8 @@ required_packages <- c("data.table" # optimized package to manage data
                        ,"openxlsx" # for reading but mostly writing xlsx with complex formatation
                        ,"writexl" # for writing xlsx
                        ,"ggplot2" # for nice graph plots
+                       #,"foreign" # to read .dbf files
+                       ,"sf"
                         ) # 
 
 #  Uses the fucntion created at general-functions.R and install the requeired ones (if not already installed)

@@ -139,6 +139,24 @@ rm(comparison,na_count_check) # remove temp data
 # add ANO_VENCIMENTO_PORTARIA
 #dt[, ANO_VENCIMENTO_PORTARIA := lubridate::year(DATA_VENCIMENTO_PORTARIA) ]
 
+#-------------------------------------------------------------
+# Ajustando formato dos dados: ajuste da coluna PROCESSO (remoção das letras e sem zeros à esquerda)
+#-------------------------------------------------------------
+
+# Se o processo era "9903504ERR", o gsub transforma em "9903504E". O número de um PROCESSO tem formato numérico
+# O as.numeric garante que, se houver lixo restando, ele seja tratado.
+
+dt[, PROCESSO := {
+  
+  # 1. Remove qualquer caractere que não seja dígito
+  apenas_numeros <- gsub("[^0-9]", "", PROCESSO)
+  
+  # 2. Converte para numérico (remove zeros à esquerda e limpa o formato)
+  temp_num <- as.numeric(apenas_numeros)
+  
+  # 3. Converte de volta para texto (formato final de identificador)
+  as.character(temp_num)
+}]
 
 #-------------------------------------------------------------
 # Salvando dados
